@@ -18,7 +18,14 @@ I don't show how to configure LDAP. This howto expects that you have some knowle
 ```
 ALL ALL=(git) NOPASSWD:SETENV: /path/to/gitolite/bin/gitolite-shell 
 ```
-**Warning!** This is a security problem if the user has access to the system running gitolite (most cases). We did not come up with a better solution yet.
+**Warning!** This is a security problem if the user has access to the system running gitolite (most cases) as he now can execute gitolite-shell pretending to be any user he knows!
+**But there is a workaround.** Add gitolite-shell-force-noninteractive.sh to your system and use the following instead:
+```
+ALL ALL=(git) NOPASSWD:SETENV: /path/to/gitolite-shell-force-noninteractive.sh
+```
+The script will check if the user is on a tty and then disallows the access of the gitolite shell. If you use this approach be sure to change the path to gitolite-shell-force-noninteractive.sh in the http and ssh wrapper scripts instead of the PATH to gitolite shell.
+
+If you have a better solution to this problem, let me know!
 
 ### SSH
 * Is your system already is configured to use LDAP? Fine! Go on. If not find one of the thousands of howtos for your system.

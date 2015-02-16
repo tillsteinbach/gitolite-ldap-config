@@ -2,11 +2,10 @@
 
 # author: till.steinbach@informatik.haw-hamburg.de
 
-# Provides all ssh keys as user@ldapX.pub
+# Provides ssh keys for user (for user git all keys are allowed)
 #
 
 LDAPSEARCH=/path/to/ldapsearch
-GITOLITESHELL=/path/to/gitolite/src/gitolite-shell
 
 ldap_keys() {
         user=$1;

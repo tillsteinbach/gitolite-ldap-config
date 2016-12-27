@@ -1,5 +1,6 @@
 #!/bin/bash
 #HOME and PATH are only exported when gitolite-shell is called
+HOME_ORIG=$HOME
 HOME=/path/to/gitolite
 PATH=$PATH:/path/to/git/bin/
 GITOLITE_SHELL=$HOME/bin/gitolite-shell
@@ -28,9 +29,14 @@ if [[ $(id) == $(id git) ]]; then
         echo "git is not allowed to have a shell! try help command!"
         exit 0
 fi
+
+# Restore HOME variable back
+HOME=$HOME_ORIG
+export HOME
+
 # Might be a command? If it is a command execute shell with -c
 if [ -n "$SSH_ORIGINAL_COMMAND" ]; then
-        $SHELL -c $SSH_ORIGINAL_COMMAND
+        $SHELL -c "$SSH_ORIGINAL_COMMAND"
         exit 0
 fi
 # Fallback: run the users shell instead

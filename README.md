@@ -1,4 +1,4 @@
-# gitolite-ldap-config
+# gitolite-ldap-config - *An Amazing Work*
 Run gitolite with LDAP backend and SSH + HTTP/S
 
 The scripts allow to use "git clone git@server:somerepo" syntax with pubkey only, "git clone username@server:somerepo" with pubkey or password via ssh, or "git clone http://server/publicrepo" as user anonymous and "git clone https://server/somerepo" with username and password via http.
